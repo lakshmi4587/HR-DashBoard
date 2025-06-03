@@ -32,11 +32,11 @@ export default function UserView({
   address,
   bio,
   performanceHistory,
-  bookmarked,
+  // bookmarked,
   projects,
   feedback,
-  onBookmark,
-  onPromote,
+  // onBookmark,
+  // onPromote,
 }: UserViewProps) {
   const router = useRouter();
   type TabType = 'overview' | 'projects' | 'feedback';
