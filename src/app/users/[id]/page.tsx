@@ -45,45 +45,55 @@ function randomRole(seed: number) {
   return ROLES[seed % ROLES.length];
 }
 
-// Simple seeded random generator to get stable data per user
 function seededRandom(seed: number) {
   const x = Math.sin(seed) * 10000;
   return x - Math.floor(x);
 }
 
-// Generate unique performance history per user id
 function generatePerformanceHistory(userId: number) {
   return QUARTERS.map((quarter, idx) => {
-    // Use userId + idx to generate stable ratings
     const randIndex = Math.floor(seededRandom(userId * 10 + idx) * PERFORMANCE_LABELS.length);
-    const label = PERFORMANCE_LABELS[randIndex];
-    return `${quarter} - ${label}`;
+    return `${quarter} - ${PERFORMANCE_LABELS[randIndex]}`;
   });
 }
 
-// Generate unique projects (3 per user)
 function generateProjects(userId: number) {
-  const projects = [];
-  let index = userId % PROJECTS_POOL.length;
+  const projects: string[] = [];
+  const index = userId % PROJECTS_POOL.length; // Changed to const
   for (let i = 0; i < 3; i++) {
     projects.push(PROJECTS_POOL[(index + i) % PROJECTS_POOL.length]);
   }
   return projects;
 }
 
-// Generate unique feedback (3 per user)
 function generateFeedback(userId: number) {
-  const feedback = [];
-  let index = (userId * 3) % FEEDBACK_POOL.length;
+  const feedback: string[] = [];
+  const index = (userId * 3) % FEEDBACK_POOL.length; // Changed to const
   for (let i = 0; i < 3; i++) {
     feedback.push(FEEDBACK_POOL[(index + i) % FEEDBACK_POOL.length]);
   }
   return feedback;
 }
 
+interface User {
+  id: number;
+  name: string;
+  role: string;
+  email: string;
+  phone: string;
+  age: number;
+  department: string;
+  rating: number;
+  address: string;
+  bio: string;
+  performanceHistory: string[];
+  projects: string[];
+  feedback: string[];
+}
+
 export default function UserPage() {
   const { id } = useParams();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null); // Typed user
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

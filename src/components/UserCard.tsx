@@ -33,10 +33,14 @@ export default function UserCard({
   const [rating, setRating] = useState(user.rating); // ⬅️ Track local rating
 
   const handlePromote = () => {
-    const newRating = Math.min(5, rating + 0.5); // Cap rating at 5
-    setRating(newRating);
-    onPromote();
-  };
+  if (rating >= 5) {
+    alert('User already has the maximum rating!'); // Show a message
+    return;
+  }
+  const newRating = Math.min(5, rating + 0.5);
+  setRating(newRating);
+  onPromote();
+};
 
   return (
     <div className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-3 w-full max-w-sm dark:bg-gray-800">

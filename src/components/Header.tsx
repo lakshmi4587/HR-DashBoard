@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { LayoutDashboard, Bookmark, BarChart3, Moon, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
+import Image from 'next/image'
 export default function Header() {
   const pathname = usePathname();
 
@@ -43,9 +43,10 @@ export default function Header() {
           <div
             onClick={toggleTheme}
             className="bg-indigo-100 p-2 rounded-full cursor-pointer"
-            title="Toggle Dark Mode"
+            
           >
-            <img src="/icon.png" alt="Logo" className="w-6 h-6" />
+           <Image src="/icon.png" alt="Logo" width={24} height={24} className="cursor-pointer" />
+
           </div>
           <div>
             <h1 className="font-bold text-lg text-gray-800 dark:text-white">HR Dashboard</h1>

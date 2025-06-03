@@ -39,7 +39,10 @@ export default function UserView({
   onPromote,
 }: UserViewProps) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'feedback'>('overview');
+  type TabType = 'overview' | 'projects' | 'feedback';
+
+  const [activeTab, setActiveTab] = useState<TabType>('overview');
+
 
   const getRatingFromLabel = (label: string): number => {
     const map: { [key: string]: number } = {
@@ -62,7 +65,7 @@ export default function UserView({
         >
           ← Back to Dashboard
         </button>
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <button
             onClick={onBookmark}
             className={`text-sm px-4 py-1.5 rounded-full transition ${
@@ -79,7 +82,7 @@ export default function UserView({
           >
             🚀 Promote
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Profile Card */}
@@ -130,22 +133,23 @@ export default function UserView({
 
       {/* Tabs */}
       <div className="flex gap-6 text-sm font-medium text-gray-600 border-b pb-2 mb-6">
-        {['overview', 'projects', 'feedback'].map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab as any)}
-            className={`relative pb-1 ${
-              activeTab === tab
-                ? 'text-blue-600 font-semibold'
-                : 'hover:text-blue-500 text-gray-500'
-            }`}
-          >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-            {activeTab === tab && (
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 rounded-full" />
-            )}
-          </button>
-        ))}
+        {(['overview', 'projects', 'feedback'] as TabType[]).map((tab) => (
+  <button
+    key={tab}
+    onClick={() => setActiveTab(tab)}
+    className={`relative pb-1 ${
+      activeTab === tab
+        ? 'text-blue-600 font-semibold'
+        : 'hover:text-blue-500 text-gray-500'
+    }`}
+  >
+    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+    {activeTab === tab && (
+      <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600 rounded-full" />
+    )}
+  </button>
+))}
+
       </div>
 
       {/* Tab Content */}

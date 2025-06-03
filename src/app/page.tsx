@@ -1,7 +1,6 @@
 'use client';
 
 import SearchBar from '@/components/SearchBar';
-import FilterBar from '@/components/FilterBar';
 import useUsers from '@/hooks/useUsers';
 import UserCard from '@/components/UserCard';
 import { useRouter } from 'next/navigation';
@@ -22,9 +21,6 @@ export default function HomePage() {
   } = useUsers();
 
   const { bookmarks, toggleBookmark, isBookmarked } = useBookmarks();
-
-  const departments = ['HR', 'Engineering', 'Sales', 'Marketing', 'Support'];
-  const ratings = [1, 2, 3, 4, 5];
 
   const totalEmployees = allUsers.length;
 

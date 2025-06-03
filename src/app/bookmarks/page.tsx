@@ -5,6 +5,17 @@ import { useBookmarks } from '@/context/BookmarkContext';
 import UserCard from '@/components/UserCard';
 import { useRouter } from 'next/navigation';
 
+interface User {
+  id: number;
+  name: string;
+  role: string;
+  email: string;
+  phone: string;
+  age: number;
+  department: string;
+  rating: number;
+}
+
 export default function BookmarksPage() {
   const { bookmarks, toggleBookmark, isBookmarked } = useBookmarks();
   const router = useRouter();
@@ -13,9 +24,10 @@ export default function BookmarksPage() {
     router.push(`/users/${id}`);
   };
 
-  const handlePromote = (user: any) => {
-    alert(`Promote ${user.name} (functionality not implemented)`);
-  };
+  const handlePromote = (user: User) => {
+  alert(`Promote ${user.name} (functionality not implemented)`);
+};
+
 
   const totalEmployees = 20;
   const bookmarkedCount = bookmarks.length;

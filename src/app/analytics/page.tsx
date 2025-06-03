@@ -34,6 +34,13 @@ type User = {
   bookmarked?: boolean; // we'll mock this
 };
 
+interface ApiUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  company: unknown; // We will override this with our mocked department
+}
+
 const departmentsList = ['HR', 'Engineering', 'Sales', 'Marketing', 'Support'];
 
 export default function AnalyticsPage() {
@@ -48,7 +55,7 @@ export default function AnalyticsPage() {
         const data = await res.json();
 
         // Map users with mocked rating and bookmarked status
-        const usersWithExtras: User[] = data.users.map((u: any, i: number) => ({
+        const usersWithExtras: User[] = data.users.map((u: ApiUser, i: number) => ({
           id: u.id,
           firstName: u.firstName,
           lastName: u.lastName,
@@ -116,9 +123,8 @@ export default function AnalyticsPage() {
   return (
     <div className="p-8 bg-blue-100 dark:bg-gray-800 min-h-screen">
       <h1 className="text-4xl font-bold mb-8 text-center text-purple-700 dark:text-purple-400">
-  Analytics Dashboard
-</h1>
-
+        Analytics Dashboard
+      </h1>
 
       {/* Charts side by side */}
       <div className="flex flex-col md:flex-row gap-8 mb-12">

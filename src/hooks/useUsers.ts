@@ -10,13 +10,32 @@ export interface User {
   phone: string;
   department: string;
   rating: number;
-  role: string;  // Changed from optional to required
+  role: string;  // required
 }
 
 const DEPARTMENTS = ['HR', 'Engineering', 'Sales', 'Marketing', 'Support'];
 
 function randomDept() {
   return DEPARTMENTS[Math.floor(Math.random() * DEPARTMENTS.length)];
+}
+
+// Define the shape of the user object returned from the API
+interface ApiUser {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  age: number;
+  phone: string;
+  // Add other properties if needed
+}
+
+// Define the shape of the API response
+interface ApiResponse {
+  users: ApiUser[];
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 export default function useUsers() {
@@ -28,8 +47,9 @@ export default function useUsers() {
   useEffect(() => {
     async function fetchUsers() {
       const res = await fetch('https://dummyjson.com/users?limit=20');
-      const data = await res.json();
-      const generated = data.users.map((u: any) => ({
+      const data = (await res.json()) as ApiResponse;
+
+      const generated = data.users.map((u: ApiUser) => ({
         id: u.id,
         name: `${u.firstName} ${u.lastName}`,
         email: u.email,
@@ -37,8 +57,9 @@ export default function useUsers() {
         phone: u.phone,
         department: randomDept(),
         rating: Math.floor(Math.random() * 5) + 1,
-        role: 'Employee', // always assign a string role
+        role: 'Employee',
       }));
+
       setUsers(generated);
     }
     fetchUsers();
