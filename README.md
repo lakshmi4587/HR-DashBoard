@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## HR Performance Dashboard
 
-## Getting Started
+The HR Performance Dashboard is a web application designed to help organizations manage, analyze, and visualize employee performance data. It offers a clean, intuitive interface to monitor employee details, filter based on various criteria, bookmark favorites, and view analytics in real-time.
 
-First, run the development server:
+##  Key Features
 
-```bash
+###  Home Page  
+Overview of the dashboard with a modern layout and navigation to essential sections like Dashboard, Bookmarks, and Analytics.
+
+###  Employee Directory  
+View a grid of employee cards with key info such as name, company, domain, and email. Each card includes a bookmark toggle and link to the employee’s detailed page.
+
+###  Search & Filters  
+Filter employees based on their name, company, or domain using a responsive search and dropdown system.
+
+###  Bookmarks  
+Easily bookmark and manage your favorite employees for quick reference.
+
+###  Analytics  
+Visualize employee statistics using charts powered by Chart.js. Includes insights such as domain distribution and company-wise employee count.
+
+###  Detailed Profile Pages  
+Click on an employee card to view a comprehensive profile page with extended details and performance-related data.
+
+---
+
+## Technologies Used
+
+- **Frontend**: Next.js (App Router), Tailwind CSS
+- **State Management**: Context API
+- **Charts**: Chart.js
+- **API**: [DummyJSON](https://dummyjson.com/users?limit=20) (used for employee data)
+
+---
+
+###  How to Run
+1)Install Dependencies
+npm install
+
+2)How to Run
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3)View in Browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Application Visual Overview
+## Dashboard Page
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![image](https://github.com/user-attachments/assets/7be12d95-d504-4245-a3c2-a9ca24f4f5bd)
 
-## Learn More
+## _____________________________________________________________________________________________________
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://github.com/user-attachments/assets/2ca8ed7d-5dad-4c81-bb55-d728ff266b64)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## View Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![image](https://github.com/user-attachments/assets/171c014d-61aa-4d07-9700-4f3f3fa4e0fb)
 
-## Deploy on Vercel
+## Bookmark Page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://github.com/user-attachments/assets/466c2bad-d4d4-4d88-91e9-46b6c7726b74)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Analytics Page
+
+![image](https://github.com/user-attachments/assets/7e9af33b-c007-4bbc-b026-0e4e479ba264)
+
+## _____________________________________________________________________________________________________
+
+![image](https://github.com/user-attachments/assets/e4234462-6a9e-4f1f-9400-d5c10a903eed)
+
+
+
+
